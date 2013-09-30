@@ -85,6 +85,13 @@
 typedef int Eina_Error;
 
 /**
+ * @var EINA_ERROR_NONE
+ * None error identifier
+ */
+
+EAPI extern Eina_Error EINA_ERROR_NONE;
+
+/**
  * @var EINA_ERROR_OUT_OF_MEMORY
  * Error identifier corresponding to a lack of memory.
  */

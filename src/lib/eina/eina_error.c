@@ -105,9 +105,11 @@ _eina_error_msg_alloc(void)
  * @cond LOCAL
  */
 
-EAPI Eina_Error EINA_ERROR_OUT_OF_MEMORY = 0;
+EAPI Eina_Error EINA_ERROR_NONE = 0;
+EAPI Eina_Error EINA_ERROR_OUT_OF_MEMORY = 1;
 
-static const char EINA_ERROR_OUT_OF_MEMORY_STR[] = "Out of memory";
+static const char EINA_ERROR_OUT_OF_MEMORY_STR[] = "No error";
+static const char EINA_ERROR_NONE_STR[] = "Out of memory";
 
 /**
  * @endcond
@@ -122,7 +124,8 @@ static const char EINA_ERROR_OUT_OF_MEMORY_STR[] = "Out of memory";
  * This function sets up the error module of Eina. It is called by
  * eina_init().
  *
- * This function registers the error #EINA_ERROR_OUT_OF_MEMORY.
+ * This function registers the error #EINA_ERROR_OUT_OF_MEMORY and
+ * #EINA_ERROR_NONE
  *
  * @see eina_init()
  */
@@ -130,6 +133,9 @@ Eina_Bool
 eina_error_init(void)
 {
    /* TODO register the eina's basic errors */
+   
+   EINA_ERROR_NONE = eina_error_msg_static_register(
+         EINA_ERROR_NONE_STR);
    EINA_ERROR_OUT_OF_MEMORY = eina_error_msg_static_register(
          EINA_ERROR_OUT_OF_MEMORY_STR);
    return EINA_TRUE;
